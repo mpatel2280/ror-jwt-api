@@ -1,0 +1,107 @@
+Ref: https://medium.com/binar-academy/rails-api-jwt-authentication-a04503ea3248
+
+----------------------------------------------------------------------------------------------------------
+#Create User
+# http://localhost:3001/users
+# POST 
+
+#Request Payload 
+{
+    "name": "manish2",
+    "username": "manish2",
+    "email": "manish2@ror.com",
+    "password": "manish2",
+    "password_confirmation": "manish2"
+}
+
+#Response Payload
+{
+    "id": 3,
+    "name": "manish2",
+    "username": "manish2",
+    "email": "manish2@ror.com",
+    "password_digest": "$2a$12$rZAOEJDBINlUwE9aHxZxAOdHyMNoHoljQRQH3vZFo0rjQ52OrxmCO",
+    "created_at": "2024-06-30T13:24:02.327Z",
+    "updated_at": "2024-06-30T13:24:02.327Z"
+}
+
+----------------------------------------------------------------------------------------------------------
+#Login / Generate Token
+# http://localhost:3001/auth/login 
+# POST 
+
+#Request Payload
+{
+    "email": "manish1@ror.com",
+    "password": "manish1"
+}
+
+#Response Payload
+{
+    "token": "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MTk4NDAxMzB9.LSWLGX1mT8PULpxxWGI3gth1lqFsvUR0_0iDFP4R4_w",
+    "exp": "07-01-2024 18:52",
+    "username": "manish1"
+}
+
+----------------------------------------------------------------------------------------------------------
+#Get all users 
+# http://localhost:3001/users
+# GET 
+
+#Request Payload
+Authorization: Bearer Token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MTk4NDAzNzl9.tnsmNoa3uVX5vSZxOR5u3Is3jsJYe2UkZt1I9B9Qxmc
+
+
+#Response Payload 
+[
+    {
+        "id": 1,
+        "name": "manish",
+        "username": "manish",
+        "email": "manish@ror.com",
+        "password_digest": "$2a$12$zxCkYrBUFIu4yPeEl3IpaOdo8ZP5eYmf6hBzRO5KZRNk2A12p3L8q",
+        "created_at": "2024-06-30T11:32:29.803Z",
+        "updated_at": "2024-06-30T11:32:29.803Z"
+    },
+    {
+        "id": 2,
+        "name": "manish1",
+        "username": "manish1",
+        "email": "manish1@ror.com",
+        "password_digest": "$2a$12$ismjEtlfB49kY6HiRPokuuSTXFMpD4bSdjaGRW2CHwvCcdXF7uGx6",
+        "created_at": "2024-06-30T13:02:21.959Z",
+        "updated_at": "2024-06-30T13:02:21.959Z"
+    },
+    {
+        "id": 3,
+        "name": "manish2",
+        "username": "manish2",
+        "email": "manish2@ror.com",
+        "password_digest": "$2a$12$rZAOEJDBINlUwE9aHxZxAOdHyMNoHoljQRQH3vZFo0rjQ52OrxmCO",
+        "created_at": "2024-06-30T13:24:02.327Z",
+        "updated_at": "2024-06-30T13:24:02.327Z"
+    }
+]
+
+----------------------------------------------------------------------------------------------------------
+#Get user 
+#http://localhost:3001/users/manish
+# GET 
+
+#Request Payload
+Authorization: Bearer Token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MTk4NDAzNzl9.tnsmNoa3uVX5vSZxOR5u3Is3jsJYe2UkZt1I9B9Qxmc
+
+
+#Response Payload 
+{
+    "id": 1,
+    "name": "manish",
+    "username": "manish",
+    "email": "manish@ror.com",
+    "password_digest": "$2a$12$zxCkYrBUFIu4yPeEl3IpaOdo8ZP5eYmf6hBzRO5KZRNk2A12p3L8q",
+    "created_at": "2024-06-30T11:32:29.803Z",
+    "updated_at": "2024-06-30T11:32:29.803Z"
+}
+----------------------------------------------------------------------------------------------------------
+
+
