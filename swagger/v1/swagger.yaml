@@ -1,0 +1,206 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/pets":
+    post:
+      summary: Creates a pet
+      tags:
+      - Pets
+      parameters: []
+      responses:
+        '201':
+          description: pet created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                photo_url:
+                  type: string
+                status:
+                  type: string
+              required:
+              - name
+              - status
+          application/xml:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                photo_url:
+                  type: string
+                status:
+                  type: string
+              required:
+              - name
+              - status
+  "/api/v1/pets/{id}":
+    get:
+      summary: Retrieves a pet
+      tags:
+      - Pets
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: name found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  photo_url:
+                    type: string
+                  status:
+                    type: string
+                required:
+                - id
+                - name
+                - status
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  photo_url:
+                    type: string
+                  status:
+                    type: string
+                required:
+                - id
+                - name
+                - status
+        '404':
+          description: pet not found
+  "/users":
+    post:
+      summary: Creates user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: user created
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                password_confirmation:
+                  type: string
+              required:
+              - name
+              - username
+              - email
+              - password
+              - password_confirmation
+          application/xml:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                username:
+                  type: string
+                email:
+                  type: string
+                password:
+                  type: string
+                password_confirmation:
+                  type: string
+              required:
+              - name
+              - username
+              - email
+              - password
+              - password_confirmation
+    get:
+      summary: Get all users
+      tags:
+      - Users
+      parameters:
+      - name: user
+        in: header
+        schema:
+          type: object
+          properties:
+            Authorization:
+              type: string
+          required:
+          - Authorization
+      responses:
+        '201':
+          description: get all users
+        '422':
+          description: invalid request
+  "/auth/login":
+    post:
+      summary: Login user / Generate Token
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: user login and token generated
+        '422':
+          description: invalid request
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+          application/xml:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+              required:
+              - email
+              - password
+servers:
+- url: http://localhost:3001
+  variables:
+    defaultHost:
+      default: http://localhost:3001

@@ -1,4 +1,6 @@
-Ref: https://medium.com/binar-academy/rails-api-jwt-authentication-a04503ea3248
+Ref: 
+https://medium.com/binar-academy/rails-api-jwt-authentication-a04503ea3248
+https://medium.com/@sushildamdhere/how-to-document-rest-apis-with-swagger-and-ruby-on-rails-ae4e13177f5d
 
 ----------------------------------------------------------------------------------------------------------
 #Create User
@@ -105,3 +107,19 @@ Authorization: Bearer Token: eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE3MT
 ----------------------------------------------------------------------------------------------------------
 
 
+#Swagger API 
+
+rails new swagger-demo --api
+rails generate model Pet name photo_url status
+rails generate scaffold_controller api/v1/pets
+    group :development, :test do
+    gem 'rspec-rails', '~> 3.5'
+    end
+    gem 'rswag'
+bundle install
+rails generate rspec:install
+rails g rswag:install
+rake rswag:specs:swaggerize
+http://localhost:3001/api-docs/index.html
+
+----------------------------------------------------------------------------------------------------------
