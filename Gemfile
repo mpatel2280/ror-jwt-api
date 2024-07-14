@@ -55,6 +55,21 @@ end
 group :development, :test do
   gem 'rspec-rails'
 end
+
+# Gemfile
+group :development do
+  gem 'letter_opener'
+end
+
 gem 'rswag'
 
 gem 'redis'
+
+gem 'httparty'
+
+gem 'rest-client'
+
+gem 'sidekiq'
+
+gem 'resque'
+gem 'resque-scheduler', require: 'resque/scheduler'

@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     end
   
     # GET /users/{username}
-    def show
+    def show      
       render json: @user, status: :ok
     end
   
@@ -34,6 +34,8 @@ class UsersController < ApplicationController
     def create
       @user = User.new(user_params)
       if @user.save
+        #UserMailer.with(user: @user).user_created.deliver_now
+        UserMailer.user_created(@user).deliver_now
         delete_records_from_redis('all_users')
         render json: @user, status: :created
       else

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :posts
   mount Rswag::Ui::Engine => '/api-docs'
   mount Rswag::Api::Engine => '/api-docs'
   namespace :api do
@@ -18,6 +19,9 @@ Rails.application.routes.draw do
   #resources :users, param: :_username
   resources :users
   post '/auth/login', to: 'authentication#login'
-  get '/*a', to: 'application#not_found'
+  # get '/*a', to: 'application#not_found'
+
+  #Ractor tasks
+  get 'ractors/perform_tasks', to: 'ractors#perform_tasks'
 
 end
