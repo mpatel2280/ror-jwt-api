@@ -2,6 +2,18 @@ Ref:
 https://medium.com/binar-academy/rails-api-jwt-authentication-a04503ea3248
 https://medium.com/@sushildamdhere/how-to-document-rest-apis-with-swagger-and-ruby-on-rails-ae4e13177f5d
 
+
+#Connect postgresql
+sudo -u postgres psql
+
+#show databases
+\list
+
+#select database
+\c db_name 
+
+#show tables 
+\dt 
 ----------------------------------------------------------------------------------------------------------
 #Create User
 # http://localhost:3001/users
@@ -127,5 +139,11 @@ http://localhost:3001/api-docs/index.html
 #Redis cache
 https://guides.rubyonrails.org/caching_with_rails.html
 
+#Connect 
+redis-cli
+
+#get datab
+get <key> 
+get all_users -> Ref Key from : app/controllers/users_controller.rb
 
 ----------------------------------------------------------------------------------------------------------
