@@ -34,8 +34,8 @@ class UsersController < ApplicationController
     def create
       @user = User.new(user_params)
       if @user.save
-        #UserMailer.with(user: @user).user_created.deliver_now
-        UserMailer.user_created(@user).deliver_now
+        #UserMailer.user_created(@user).deliver_now
+        CreateUserEmailWorker.perform_async(@user.name, @user.email, 5)
         delete_records_from_redis('all_users')
         render json: @user, status: :created
       else
