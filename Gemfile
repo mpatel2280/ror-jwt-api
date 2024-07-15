@@ -73,3 +73,5 @@ gem 'sidekiq'
 
 gem 'resque'
 gem 'resque-scheduler', require: 'resque/scheduler'
+
+gem 'concurrent-ruby'
