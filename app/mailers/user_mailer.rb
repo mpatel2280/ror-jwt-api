@@ -1,7 +1,8 @@
 class UserMailer < ApplicationMailer
-    def user_created(user)
-        @user = user
+    def user_created(name, email)
+        @name = name
+        @email = email
         @url  = 'http://localhost:3001/'
-        mail(to: @user.email, subject: 'User has been created!')
+        mail(to: @email, subject: 'User has been created!')
       end
 end
