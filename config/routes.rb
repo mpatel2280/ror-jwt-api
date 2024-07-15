@@ -24,4 +24,6 @@ Rails.application.routes.draw do
   #Ractor tasks
   get 'ractors/perform_tasks', to: 'ractors#perform_tasks'
 
+  get '/get_concurrent_data', to: "concurrent#get_concurrent_data"
+
 end
