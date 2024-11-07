@@ -1,6 +1,7 @@
 # app/controllers/authentication_controller.rb
 class AuthenticationController < ApplicationController
-    before_action :authorize_request, except: [:login, :get_concurrent_data]
+    # before_action :authorize_request, except: [:login, :get_concurrent_data]
+    before_action :authorize_request, except: [:login]
   
     # POST /auth/login
     def login
